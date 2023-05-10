@@ -4,34 +4,48 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Recipe_Sharing</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl7/1L_dstPt3HV5HzF6Gvk/e3w7bpGmL2x5cr1wrt" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Recipe_Sharing.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="#">Recipe Sharing</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Recipes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Groups</a>
-                        </li>
+    <header class="p-3 text-bg-dark">
+        <div class="container">
+            <nav>
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+                    </a>
+
+                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                        <li><a href="/Index" class="nav-link px-2 text-secondary">Home</a></li>
+                        <li><a href="/Recipes/Index" class="nav-link px-2 text-white">Recipes</a></li>
+                        <li><a href="/Reviews/Index" class="nav-link px-2 text-white">Reviews</a></li>
+                        <li><a href="/Groups/Index" class="nav-link px-2 text-white">Groups</a></li>
+                        <li><a href="/Profiles/Index" class="nav-link px-2 text-white">Profile</a></li>
                     </ul>
-                    <partial name="_LoginPartial" model="@ViewData" />
+
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                        <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+                    </form>
+
+                    <div class="text-end d-flex align-items-center">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="/Profiles/Index" class="btn btn-warning me-2">Profile</a>
+                            <span class="me-2">Hello, @User.Identity.Name!</span>
+                            <a href="/Identity/Account/LogOut" class="btn btn-outline-light">Log out</a>
+                        }
+                        else
+                        {
+                            <a href="/Identity/Account/Login" class="btn btn-outline-light me-2">Login</a>
+                            <a href="/Identity/Account/Register" class="btn btn-warning">Sign-up</a>
+                        }
+                    </div>
+
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -41,10 +55,9 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - Josh Norwood - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2023 - Recipe_Sharing - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
-
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

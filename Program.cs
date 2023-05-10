@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Recipe_Sharing.Data;
+using Microsoft.Extensions.DependencyInjection;
 using Recipe_Sharing.Areas.Identity.Data;
+using Recipe_Sharing.Data;
 using Recipe_Sharing.Models;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +20,21 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
+
+// Seed the database.
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        SeedData.Initialize(services);
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while seeding the database.");
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -41,4 +58,3 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
-
