@@ -26,7 +26,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
                     </ul>
-                    <partial name="_LoginPartial" />
+                    <partial name="_LoginPartial" model="@ViewData" />
                 </div>
             </div>
         </nav>
@@ -39,7 +39,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - Recipe_Sharing - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2023 - Josh Norwood - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
 
