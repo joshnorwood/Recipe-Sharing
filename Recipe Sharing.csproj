@@ -13,7 +13,6 @@
   <ItemGroup>
     <None Remove="Models\" />
     <None Remove="Pages\Recipes\" />
-    <None Remove="Pages\Profiles\" />
     <None Remove="Pages\Groups\" />
     <None Remove="Pages\Reviews\" />
   </ItemGroup>
@@ -38,7 +37,6 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Pages\Recipes\" />
-    <Folder Include="Pages\Profiles\" />
     <Folder Include="Pages\Groups\" />
     <Folder Include="Pages\Reviews\" />
   </ItemGroup>

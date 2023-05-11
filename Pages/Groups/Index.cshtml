@@ -1,42 +1,28 @@
 @page
 @model Recipe_Sharing.Pages.Groups.IndexModel
-
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Groups";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Group[0].Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Group[0].Description)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Group) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="container-fluid">
+    <h1 class="text-center mb-4">@ViewData["Title"]</h1>
+    <div class="form-group text-center"
+        <div class="col-md-6">
+            <a asp-page="Create" class="btn btn-primary mb-4">Create Group</a>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        @foreach (var group in Model.Group)
+        {
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@group.Name</h5>
+                        <p class="card-text">@group.Description</p>
+                        <a href="@Url.Page("Details", new { id = group.Id })" class="btn btn-primary">View Group</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Recipe_Sharing.Data;
 using Recipe_Sharing.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Recipe_Sharing.Pages.Recipes
 {
+    [Authorize]
     public class EditModel : PageModel
     {
         private readonly Recipe_Sharing.Data.ApplicationDbContext _context;

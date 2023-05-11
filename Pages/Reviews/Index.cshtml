@@ -2,53 +2,28 @@
 @model Recipe_Sharing.Pages.Reviews.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Reviews";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Review[0].Comment)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Review[0].Rating)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Review[0].User)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Review[0].Recipe)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Review) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Comment)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Recipe.Id)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="container-fluid">
+    <h1 class="text-center mb-4">@ViewData["Title"]</h1>
+    <div class="form-group text-center"
+        <div class="col-md-6">
+            <a asp-page="Create" class="btn btn-primary mb-4">Create Review</a>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        @foreach (var review in Model.Review)
+        {
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@review.Rating.</h5>
+                        <p class="card-text">@review.Comment</p>
+                        <a href="@Url.Page("Details", new { id = review.Id })" class="btn btn-primary">View Review</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

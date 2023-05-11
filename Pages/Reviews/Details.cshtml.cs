@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Recipe_Sharing.Data;
 using Recipe_Sharing.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Recipe_Sharing.Pages.Reviews
 {
+    [Authorize]
     public class DetailsModel : PageModel
     {
         private readonly Recipe_Sharing.Data.ApplicationDbContext _context;

@@ -22,7 +22,6 @@
                         <li><a href="/Recipes/Index" class="nav-link px-2 text-white">Recipes</a></li>
                         <li><a href="/Reviews/Index" class="nav-link px-2 text-white">Reviews</a></li>
                         <li><a href="/Groups/Index" class="nav-link px-2 text-white">Groups</a></li>
-                        <li><a href="/Profiles/Index" class="nav-link px-2 text-white">Profile</a></li>
                     </ul>
 
                     <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -32,7 +31,7 @@
                     <div class="text-end d-flex align-items-center">
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <a href="/Profiles/Index" class="btn btn-warning me-2">Profile</a>
+                            <a href="/Identity/Account/Manage/Index" class="btn btn-warning me-2">Profile</a>
                             <span class="me-2">Hello, @User.Identity.Name!</span>
                             <a href="/Identity/Account/LogOut" class="btn btn-outline-light">Log out</a>
                         }
@@ -55,7 +54,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - Recipe_Sharing - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2023 - Kitchen Connect
         </div>
     </footer>
 

@@ -5,10 +5,49 @@
 }
 
 <header class="jumbotron jumbotron-fluid bg-primary text-white">
-    <div class="container">
-        <h1 class="display-4">Welcome to Recipe Sharing</h1>
-        <p class="lead">Discover, share, and save your favorite recipes from around the world.</p>
+    <div class="container text-center">
+        <h1 class="display-4">Welcome To Kitchen Connect</h1>
+        <p class="lead">Discover, Share, And Save Your Favorite Recipes From Around The World.</p>
     </div>
 </header>
 
 
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Sample Recipes</h3>
+            <div class="list-group">
+                @foreach (var recipe in Model.Recipes)
+                {
+                    <a href="#" class="list-group-item list-group-item-action d-inline-block mb-3">
+                        <h4 class="mb-0">@recipe.Title</h4>
+                        <p class="mb-0">@recipe.Instructions</p>
+                    </a>
+                }
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h3>Sample Groups</h3>
+            <div class="list-group">
+                @foreach (var group in Model.Groups)
+                {
+                    <a href="#" class="list-group-item list-group-item-action d-inline-block mb-3">
+                        <h4 class="mb-0">@group.Name</h4>
+                    </a>
+                }
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h3>Top Reviews</h3>
+            <div class="list-group">
+                @foreach (var review in Model.Reviews)
+                {
+                    <a href="#" class="list-group-item list-group-item-action d-inline-block mb-3">
+                        <p class="mb-0">@review.Comment</p>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
